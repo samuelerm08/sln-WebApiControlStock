@@ -23,7 +23,6 @@ namespace WebApiControlStock.Controller
 
         }
 
-
         //GET
         [HttpGet]
         public ActionResult<IEnumerable<Producto>> Get()
@@ -51,7 +50,6 @@ namespace WebApiControlStock.Controller
             context.SaveChanges();
             return Ok();
         }
-
 
     }
 
