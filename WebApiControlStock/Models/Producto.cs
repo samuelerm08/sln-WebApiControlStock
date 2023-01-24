@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlTypes;
+using WebApiControlStock.Validations;
 
 namespace WebApiControlStock.Models
 {
@@ -16,9 +17,11 @@ namespace WebApiControlStock.Models
 
         [Required]
         [Column(TypeName = "char(1)")]
+        [SoloHySValidation]
         public string LineaProducto { get; set; }
 
         [Column(TypeName = "money")]
+        [MayorACeroValidation]
         public double Precio { get; set; }
 
         public int CategoriaId { get; set; }
