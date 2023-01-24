@@ -5,13 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\**" />
     <Compile Remove="Validations\**" />
-    <Content Remove="Controllers\**" />
     <Content Remove="Validations\**" />
-    <EmbeddedResource Remove="Controllers\**" />
     <EmbeddedResource Remove="Validations\**" />
-    <None Remove="Controllers\**" />
     <None Remove="Validations\**" />
   </ItemGroup>
 
