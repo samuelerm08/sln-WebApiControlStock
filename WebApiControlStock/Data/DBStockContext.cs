@@ -5,10 +5,7 @@ namespace WebApiControlStock.Data
 {
     public class DBStockContext : DbContext
     {
-        public DBStockContext(DbContextOptions<DBStockContext> options)
-           : base(options)
-        {
-        }
+        public DBStockContext(DbContextOptions<DBStockContext> options) : base(options){}
 
         public virtual DbSet<Producto> Productos { get; set; }
 
@@ -17,4 +14,4 @@ namespace WebApiControlStock.Data
 
     }
 }
-//Hola
+
