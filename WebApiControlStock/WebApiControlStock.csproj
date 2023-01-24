@@ -5,18 +5,24 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Data\**" />
+    <Compile Remove="Controllers\**" />
     <Compile Remove="Validations\**" />
-    <Content Remove="Data\**" />
+    <Content Remove="Controllers\**" />
     <Content Remove="Validations\**" />
-    <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="Controllers\**" />
     <EmbeddedResource Remove="Validations\**" />
-    <None Remove="Data\**" />
+    <None Remove="Controllers\**" />
     <None Remove="Validations\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.25">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 
