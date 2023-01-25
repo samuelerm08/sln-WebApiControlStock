@@ -12,15 +12,11 @@ namespace WebApiControlStock.Controller
     [ApiController]
     public class ProductoController : ControllerBase
     {
-
-
         private readonly DBStockContext context;
 
         public ProductoController(DBStockContext context)
-        {
-
+        { 
             this.context = context;
-
         }
 
         //GET
@@ -30,6 +26,7 @@ namespace WebApiControlStock.Controller
             return context.Productos.Include(c => c.Categoria).ToList();
         }
 
+        //GET BY ID
         [HttpGet("{id}")]
         public ActionResult<Producto> GetById(int id)
         {
@@ -38,7 +35,7 @@ namespace WebApiControlStock.Controller
             return producto;
         }
 
-
+        //POST
         [HttpPost]
         public ActionResult<Producto> Post(Producto producto)
         {
@@ -50,7 +47,5 @@ namespace WebApiControlStock.Controller
             context.SaveChanges();
             return Ok();
         }
-
     }
-
 }

@@ -14,6 +14,7 @@ namespace WebApiControlStock.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(type: "varchar(50)", nullable: false)
                 },
+
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categoria", x => x.Id);

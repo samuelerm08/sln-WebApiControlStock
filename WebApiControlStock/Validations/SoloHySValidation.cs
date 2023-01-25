@@ -10,12 +10,12 @@ namespace WebApiControlStock.Validations
             {
                 return ValidationResult.Success;
             }
+
             var lineaProducto = value.ToString();
             
-
             if (lineaProducto != "H".ToUpper() && lineaProducto != "S".ToUpper())
             {
-                return new ValidationResult("Las líneas prooducto solo acepta caracteres H o S.");
+                return new ValidationResult("Las líneas producto solo acepta caracteres H o S.");
             }
             return ValidationResult.Success;
         }

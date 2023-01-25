@@ -36,6 +36,7 @@ namespace WebApiControlStock.Controller
             return categoria;
         }
 
+        //POST
         [HttpPost]
         public ActionResult Post(Categoria categoria)
         {
