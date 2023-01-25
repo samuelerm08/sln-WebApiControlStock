@@ -1,4 +1,4 @@
-#Web Api Control Stock.
+<h1>Web Api Control Stock.</h1>
 <hr>
 <div>
 Integrantes: 
