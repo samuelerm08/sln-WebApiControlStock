@@ -1,2 +1,11 @@
-# slnWebApiControlStock.
-## Integrantes: Samuel Rivera, Nicolas Ramos, Karen Islas y Valentino Martinez
+#Web Api Control Stock.
+<hr>
+<div>
+Integrantes: 
+<ul>
+  <li>Karen Islas</li>
+  <li>Valentino Martinez</li>
+  <li>Nicolas Ramos</li>
+  <li>Samuel Rivera</li>
+</ul>
+</div>
