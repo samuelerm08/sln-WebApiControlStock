@@ -1,7 +1,7 @@
 <h1>Web Api Control Stock.</h1>
 <hr>
+<h3>Integrantes:</h3>
 <div>
-Integrantes: 
 <ul>
   <li>Karen Islas</li>
   <li>Valentino Martinez</li>
