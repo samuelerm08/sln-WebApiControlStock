@@ -10,8 +10,6 @@ namespace WebApiControlStock.Data
         public virtual DbSet<Producto> Productos { get; set; }
 
         public virtual DbSet<Categoria> Categorias { get; set; }
-
-
     }
 }
 

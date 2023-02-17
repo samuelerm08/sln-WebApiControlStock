@@ -11,7 +11,7 @@
     "WebApiControlStock": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/stock",
+      "launchUrl": "api/producto",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

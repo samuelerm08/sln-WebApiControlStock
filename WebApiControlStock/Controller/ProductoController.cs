@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using System.Security.Policy;
 using WebApiControlStock.Data;
@@ -15,7 +16,7 @@ namespace WebApiControlStock.Controller
         private readonly DBStockContext context;
 
         public ProductoController(DBStockContext context)
-        { 
+        {
             this.context = context;
         }
 
@@ -32,7 +33,13 @@ namespace WebApiControlStock.Controller
         {
             var producto = context.Productos.Include(p => p.Categoria)
                            .FirstOrDefault(p => p.Id == id);
-            return producto;
+
+            if (producto != null)
+            {
+                return Ok(producto);
+            }
+
+            return NotFound();
         }
 
         //POST
@@ -43,9 +50,45 @@ namespace WebApiControlStock.Controller
             {
                 return BadRequest(ModelState);
             }
+
             context.Productos.Add(producto);
             context.SaveChanges();
-            return Ok();
+            return Ok(producto);
+        }
+
+        //PUT
+        [HttpPut("{id}")]
+        public ActionResult<Producto> Edit(int id, [FromBody] Producto producto)
+        {
+
+            if (id != producto.Id)
+            {
+                return BadRequest();
+            }
+
+            context.Entry(producto).State = EntityState.Modified;
+            context.SaveChanges();
+            return Ok(producto);
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<Producto> Delete(int id)
+        {
+            var p = GetProducto(id);
+
+            if (p != null)
+            {
+                context.Productos.Remove(p);
+                context.SaveChanges();
+                return Ok(p);
+            }
+
+            return NotFound();
+        }
+
+        public Producto GetProducto(int id)
+        {
+            return context.Productos.Find(id);
         }
     }
 }

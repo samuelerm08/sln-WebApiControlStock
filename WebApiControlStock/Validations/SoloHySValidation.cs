@@ -15,8 +15,9 @@ namespace WebApiControlStock.Validations
             
             if (lineaProducto != "H".ToUpper() && lineaProducto != "S".ToUpper())
             {
-                return new ValidationResult("Las líneas producto solo acepta caracteres H o S.");
+                return new ValidationResult("Las líneas producto solo acepta caracteres H o S (Mayusculas. Hardware o Software).");
             }
+
             return ValidationResult.Success;
         }
     }

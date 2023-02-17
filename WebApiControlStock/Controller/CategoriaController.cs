@@ -32,8 +32,14 @@ namespace WebApiControlStock.Controller
         [HttpGet("{id}")]
         public ActionResult<Categoria> GetById(int id)
         {
-            Categoria categoria = context.Categorias.Include(x => x.Productos).FirstOrDefault(x => x.Id == id);
-            return categoria;
+            var categoria = context.Categorias.Include(x => x.Productos).FirstOrDefault(x => x.Id == id);
+
+            if (categoria != null)
+            {
+                return Ok(categoria);
+            }
+
+            return NotFound();
         }
 
         //POST
@@ -44,9 +50,43 @@ namespace WebApiControlStock.Controller
             {
                 return BadRequest(ModelState);
             }
+
             context.Categorias.Add(categoria);
             context.SaveChanges();
-            return Ok();
+            return Ok(categoria);
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult<Categoria> Edit(int id, [FromBody] Categoria categoria)
+        {
+            if (id != categoria.Id)
+            {
+                return BadRequest();
+            }
+
+            context.Entry(categoria).State = EntityState.Modified;
+            context.SaveChanges();
+            return Ok(categoria);            
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<Categoria> Delete(int id)
+        {
+            var c = GetCategoria(id);
+
+            if (c != null)
+            {
+                context.Categorias.Remove(c);
+                context.SaveChanges();
+                return Ok();
+            }
+
+            return NotFound();
+        }
+
+        public Categoria GetCategoria(int id)
+        {
+            return context.Categorias.Find(id);
         }
     }
 }

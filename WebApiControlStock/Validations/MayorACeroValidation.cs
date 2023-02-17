@@ -14,10 +14,11 @@ namespace WebApiControlStock.Validations
 
             var precio = Convert.ToInt32(value);
 
-            if (precio <= 0)
+            if (precio < 1)
             {
                 return new ValidationResult("El precio debe ser mayor a 0");
             }
+
             return ValidationResult.Success;
         }
     }
