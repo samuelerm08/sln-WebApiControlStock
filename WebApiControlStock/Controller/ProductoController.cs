@@ -42,6 +42,22 @@ namespace WebApiControlStock.Controller
             return NotFound();
         }
 
+        //GET BY CAT-ID
+        [HttpGet("categoria/{catId}")]
+        public ActionResult<IEnumerable<Producto>> GetByCategoriaId(int catId)
+        {
+            var producto = (from p in context.Productos
+                            where p.CategoriaId == catId
+                            select p).ToList();
+
+            if (producto != null)
+            {
+                return Ok(producto);
+            }
+
+            return NotFound();
+        }
+
         //POST
         [HttpPost]
         public ActionResult<Producto> Post(Producto producto)
