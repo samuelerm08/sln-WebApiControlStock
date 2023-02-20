@@ -24,14 +24,14 @@ namespace WebApiControlStock.Controller
         [HttpGet]
         public ActionResult<IEnumerable<Producto>> Get()
         {
-            return context.Productos.Include(c => c.Categoria.Nombre).ToList();
+            return context.Productos.Include(c => c.Categoria).ToList();
         }
 
         //GET BY ID
         [HttpGet("{id}")]
         public ActionResult<Producto> GetById(int id)
         {
-            var producto = context.Productos.Include(p => p.Categoria.Nombre)
+            var producto = context.Productos.Include(p => p.Categoria)
                            .FirstOrDefault(p => p.Id == id);
 
             if (producto != null)
@@ -46,7 +46,7 @@ namespace WebApiControlStock.Controller
         [HttpGet("categoria/{catId}")]
         public ActionResult<IEnumerable<Producto>> GetByCategoriaId(int catId)
         {
-            var producto = (from p in context.Productos.Include(c => c.Categoria.Nombre)
+            var producto = (from p in context.Productos
                             where p.CategoriaId == catId
                             select p).ToList();
 
