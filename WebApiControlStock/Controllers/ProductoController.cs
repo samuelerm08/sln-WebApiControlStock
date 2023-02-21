@@ -7,7 +7,7 @@ using System.Security.Policy;
 using WebApiControlStock.Data;
 using WebApiControlStock.Models;
 
-namespace WebApiControlStock.Controller
+namespace WebApiControlStock.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -57,6 +57,22 @@ namespace WebApiControlStock.Controller
 
             return NotFound();
         }
+
+        //GET BY Nombre-Marca
+        [HttpGet("marca/{nombreMarca}")]
+        public ActionResult<IEnumerable<Producto>> GetByMarca(string nombreMarca)
+        {
+            var producto = (from p in context.Productos
+                            where p.Marca.Nombre == nombreMarca
+                            select p).ToList();
+
+            if (producto != null)
+            {
+                return Ok(producto);
+            }
+
+            return NotFound();
+        }        
 
         //POST
         [HttpPost]

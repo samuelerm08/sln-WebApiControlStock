@@ -7,7 +7,7 @@ using System.Linq;
 using WebApiControlStock.Data;
 using WebApiControlStock.Models;
 
-namespace WebApiControlStock.Controller
+namespace WebApiControlStock.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

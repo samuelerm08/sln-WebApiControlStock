@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using WebApiControlStock.Models;
 
 namespace WebApiControlStock.Data
@@ -10,6 +11,8 @@ namespace WebApiControlStock.Data
         public virtual DbSet<Producto> Productos { get; set; }
 
         public virtual DbSet<Categoria> Categorias { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<Marca> Marcas { get; set; }
     }
 }
 
