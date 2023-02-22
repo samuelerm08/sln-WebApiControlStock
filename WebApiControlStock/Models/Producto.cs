@@ -23,16 +23,10 @@ namespace WebApiControlStock.Models
 
         [Column(TypeName = "money")]
         [MayorACeroValidation]
-        public double Precio { get; set; }
-        public List<Usuario> Usuarios { get; set; }
-
-        public int CategoriaId { get; set; }
-        [ForeignKey("CategoriaId")]
-        public Categoria Categoria { get; set; }
-
+        public double Precio { get; set; }             
         public int MarcaId { get; set; }
         [ForeignKey("MarcaId")]
-        public Marca Marca { get; set; }
+        public Marca Marca { get; set; }        
     }
 }
 

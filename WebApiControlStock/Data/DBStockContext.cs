@@ -12,7 +12,7 @@ namespace WebApiControlStock.Data
 
         public virtual DbSet<Categoria> Categorias { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
-        public virtual DbSet<Marca> Marcas { get; set; }
+        public virtual DbSet<Marca> Marcas { get; set; }        
     }
 }
 

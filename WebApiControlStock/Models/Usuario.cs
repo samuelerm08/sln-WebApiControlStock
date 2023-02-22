@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Cryptography;
 
 namespace WebApiControlStock.Models
 {
@@ -26,9 +27,6 @@ namespace WebApiControlStock.Models
         public DateTime FechaNacimiento { get; set; }
 
         [Required]
-        public int DNI { get; set; }
-        public int ProductoId { get; set; }
-        [ForeignKey("ProductoId")]
-        public Producto Producto { get; set; }
+        public int DNI { get; set; }        
     }
 }

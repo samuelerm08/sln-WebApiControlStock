@@ -23,7 +23,7 @@ namespace WebApiControlStock.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Marca>> Get()
         {
-            List<Marca> marcas = context.Marcas.Include(p => p.Productos).ToList();
+            List<Marca> marcas = context.Marcas.Include(m => m.Categoria).ToList();
             return marcas;
         }
 
@@ -31,7 +31,7 @@ namespace WebApiControlStock.Controllers
         [HttpGet("{id}")]
         public ActionResult<Marca> GetById(int id)
         {
-            var marca = context.Marcas.Include(p => p.Productos).FirstOrDefault(x => x.Id == id);
+            var marca = context.Marcas.Include(m => m.Categoria).FirstOrDefault(x => x.Id == id);
 
             if (marca != null)
             {

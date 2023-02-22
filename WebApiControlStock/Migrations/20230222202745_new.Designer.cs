@@ -10,8 +10,8 @@ using WebApiControlStock.Data;
 namespace WebApiControlStock.Migrations
 {
     [DbContext(typeof(DBStockContext))]
-    [Migration("20230221005914_act")]
-    partial class act
+    [Migration("20230222202745_new")]
+    partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,11 +44,16 @@ namespace WebApiControlStock.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CatId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CatId");
 
                     b.ToTable("Marca");
                 });
@@ -59,9 +64,6 @@ namespace WebApiControlStock.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CategoriaId")
-                        .HasColumnType("int");
 
                     b.Property<string>("LineaProducto")
                         .IsRequired()
@@ -78,8 +80,6 @@ namespace WebApiControlStock.Migrations
                         .HasColumnType("money");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoriaId");
 
                     b.HasIndex("MarcaId");
 
@@ -111,36 +111,25 @@ namespace WebApiControlStock.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
-                    b.Property<int>("ProductoId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductoId");
 
                     b.ToTable("Usuario");
                 });
 
-            modelBuilder.Entity("WebApiControlStock.Models.Producto", b =>
+            modelBuilder.Entity("WebApiControlStock.Models.Marca", b =>
                 {
                     b.HasOne("WebApiControlStock.Models.Categoria", "Categoria")
-                        .WithMany("Productos")
-                        .HasForeignKey("CategoriaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WebApiControlStock.Models.Marca", "Marca")
-                        .WithMany("Productos")
-                        .HasForeignKey("MarcaId")
+                        .WithMany("Marcas")
+                        .HasForeignKey("CatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WebApiControlStock.Models.Usuario", b =>
+            modelBuilder.Entity("WebApiControlStock.Models.Producto", b =>
                 {
-                    b.HasOne("WebApiControlStock.Models.Producto", "Producto")
-                        .WithMany("Usuarios")
-                        .HasForeignKey("ProductoId")
+                    b.HasOne("WebApiControlStock.Models.Marca", "Marca")
+                        .WithMany("Productos")
+                        .HasForeignKey("MarcaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

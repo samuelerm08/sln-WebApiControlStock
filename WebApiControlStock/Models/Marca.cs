@@ -12,5 +12,9 @@ namespace WebApiControlStock.Models
         [Required]
         public string Nombre { get; set; }
         public List<Producto> Productos { get; set; }
+        public int CatId { get; set; }
+
+        [ForeignKey("CatId")]
+        public Categoria Categoria { get; set; }
     }
 }

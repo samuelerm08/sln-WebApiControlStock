@@ -24,7 +24,7 @@ namespace WebApiControlStock.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Usuario>> Get()
         {
-            List<Usuario> usuarios = context.Usuarios.Include(p => p.Producto).ToList();
+            List<Usuario> usuarios = context.Usuarios.ToList();
             return usuarios;
         }
 
@@ -32,7 +32,7 @@ namespace WebApiControlStock.Controllers
         [HttpGet("{id}")]
         public ActionResult<Usuario> GetById(int id)
         {
-            var usuarios = context.Usuarios.Include(p => p.Producto).FirstOrDefault(x => x.Id == id);
+            var usuarios = context.Usuarios.FirstOrDefault(x => x.Id == id);
 
             if (usuarios != null)
             {
