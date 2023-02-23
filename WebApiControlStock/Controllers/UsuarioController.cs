@@ -42,6 +42,22 @@ namespace WebApiControlStock.Controllers
             return NotFound();
         }
 
+        //GET by Nombre o Apellido
+        [HttpGet("filter/{text}")]
+        public ActionResult<Usuario> GetByNombreApellido(string text)
+        {
+            var usuarios = context.Usuarios
+                           .Where(i => i.Nombre == text || i.Apellido == text)
+                           .FirstOrDefault();
+
+            if (usuarios != null)
+            {
+                return Ok(usuarios);
+            }
+
+            return NotFound();
+        }
+
         //POST
         [HttpPost]
         public ActionResult Post(Usuario usuario)

@@ -24,7 +24,9 @@ namespace WebApiControlStock.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Producto>> Get()
         {
-            return context.Productos.Include(c => c.Marca).ToList();
+            return context.Productos.Include(p => p.Marca)
+                                    .Include(m => m.Marca.Categoria)
+                                    .ToList();
         }
 
         //GET BY ID
@@ -32,7 +34,8 @@ namespace WebApiControlStock.Controllers
         public ActionResult<Producto> GetById(int id)
         {
             var producto = context.Productos.Include(p => p.Marca)
-                           .FirstOrDefault(p => p.Id == id);
+                                            .Include(m => m.Marca.Categoria)
+                                            .FirstOrDefault(p => p.Id == id);
 
             if (producto != null)
             {
@@ -43,13 +46,17 @@ namespace WebApiControlStock.Controllers
         }
 
         //GET BY CAT-ID
-        [HttpGet("categoria/{catId}")]
-        public ActionResult<IEnumerable<Producto>> GetByCategoriaId(int catId)
+        [HttpGet("categoria/{nombreCategoria}")]
+        public ActionResult<IEnumerable<Producto>> GetByCategoria(string nombreCategoria)
         {
             var producto = (from p in context.Productos
                             join m in context.Marcas on p.MarcaId equals m.Id
-                            where m.CatId == catId
-                            select p).ToList();
+                            join c in context.Categorias on m.CatId equals c.Id
+                            where c.Nombre == nombreCategoria
+                            select p)
+                            .Include(p => p.Marca)
+                            .Include(m => m.Marca.Categoria)
+                            .ToList();
 
             if (producto != null)
             {
@@ -65,7 +72,10 @@ namespace WebApiControlStock.Controllers
         {
             var producto = (from p in context.Productos
                             where p.Marca.Nombre == nombreMarca
-                            select p).ToList();
+                            select p)
+                            .Include(p => p.Marca)
+                            .Include(m => m.Marca.Categoria)
+                            .ToList();
 
             if (producto != null)
             {
@@ -73,7 +83,7 @@ namespace WebApiControlStock.Controllers
             }
 
             return NotFound();
-        }        
+        }
 
         //POST
         [HttpPost]

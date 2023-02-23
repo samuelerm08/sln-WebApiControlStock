@@ -24,7 +24,7 @@ namespace WebApiControlStock.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Categoria>> Get()
         {
-            List<Categoria> categorias = context.Categorias.Include(c => c.Marcas).ToList();
+            var categorias = context.Categorias.Include(c => c.Marcas).ToList();
             return categorias;
         }
 
@@ -66,7 +66,7 @@ namespace WebApiControlStock.Controllers
 
             context.Entry(categoria).State = EntityState.Modified;
             context.SaveChanges();
-            return Ok(categoria);            
+            return Ok(categoria);
         }
 
         [HttpDelete("{id}")]
