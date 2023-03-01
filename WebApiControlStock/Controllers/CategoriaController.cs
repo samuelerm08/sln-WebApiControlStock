@@ -51,8 +51,8 @@ namespace WebApiControlStock.Controllers
                 return BadRequest(ModelState);
             }
 
-            context.Categorias.Add(categoria);
-            context.SaveChanges();
+            //context.Categorias.Add(categoria);
+            //context.SaveChanges();
             return Ok(categoria);
         }
 
@@ -64,8 +64,8 @@ namespace WebApiControlStock.Controllers
                 return BadRequest();
             }
 
-            context.Entry(categoria).State = EntityState.Modified;
-            context.SaveChanges();
+            //context.Entry(categoria).State = EntityState.Modified;
+            //context.SaveChanges();
             return Ok(categoria);
         }
 
@@ -76,8 +76,8 @@ namespace WebApiControlStock.Controllers
 
             if (c != null)
             {
-                context.Categorias.Remove(c);
-                context.SaveChanges();
+                //context.Categorias.Remove(c);
+                //context.SaveChanges();
                 return Ok();
             }
 

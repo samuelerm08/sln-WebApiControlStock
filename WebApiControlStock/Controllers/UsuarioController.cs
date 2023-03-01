@@ -67,8 +67,8 @@ namespace WebApiControlStock.Controllers
                 return BadRequest(ModelState);
             }
 
-            context.Usuarios.Add(usuario);
-            context.SaveChanges();
+            //context.Usuarios.Add(usuario);
+            //context.SaveChanges();
             return Ok(usuario);
         }
 
@@ -80,8 +80,8 @@ namespace WebApiControlStock.Controllers
                 return BadRequest();
             }
 
-            context.Entry(usuario).State = EntityState.Modified;
-            context.SaveChanges();
+            //context.Entry(usuario).State = EntityState.Modified;
+            //context.SaveChanges();
             return Ok(usuario);
         }
 
@@ -92,8 +92,8 @@ namespace WebApiControlStock.Controllers
 
             if (usuario != null)
             {
-                context.Usuarios.Remove(usuario);
-                context.SaveChanges();
+                //context.Usuarios.Remove(usuario);
+                //context.SaveChanges();
                 return Ok();
             }
 

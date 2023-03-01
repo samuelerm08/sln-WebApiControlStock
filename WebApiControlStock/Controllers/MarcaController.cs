@@ -73,8 +73,8 @@ namespace WebApiControlStock.Controllers
                 return BadRequest(ModelState);
             }
 
-            context.Marcas.Add(marca);
-            context.SaveChanges();
+            //context.Marcas.Add(marca);
+            //context.SaveChanges();
             return Ok(marca);
         }
 
@@ -86,8 +86,8 @@ namespace WebApiControlStock.Controllers
                 return BadRequest();
             }
 
-            context.Entry(marca).State = EntityState.Modified;
-            context.SaveChanges();
+            //context.Entry(marca).State = EntityState.Modified;
+            //context.SaveChanges();
             return Ok(marca);
         }
 
@@ -98,8 +98,8 @@ namespace WebApiControlStock.Controllers
 
             if (marca != null)
             {
-                context.Marcas.Remove(marca);
-                context.SaveChanges();
+                //context.Marcas.Remove(marca);
+                //context.SaveChanges();
                 return Ok();
             }
 
